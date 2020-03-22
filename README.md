@@ -1,5 +1,7 @@
 # Scandiweb Junior Developer Test
 
+![](scandiweb-app-test.gif)
+
 Instructions for testing:
 
 Note: Application requires that a mysql database has been set up, and that Composer has been installed.
