@@ -37,7 +37,7 @@ class ProductController
     {
         $is_valid = GUMP::is_valid($_POST, [
             'sku' => ['required', 'alpha_numeric'],
-            'name' => ['required', 'alpha_numeric'],
+            'name' => ['required', 'alpha_numeric_space'],
             'price' => ['required', 'numeric', 'min_numeric' => 1],
             'select' => ['required']
         ], [
@@ -47,7 +47,7 @@ class ProductController
             ],
             'name' => [
                 'required' => 'Fill the name field please.',
-                'alpha_numeric' => 'Name field must contain only alpha numeric characters.'
+                'alpha_numeric_space' => 'Name field must contain only alpha numeric characters.'
             ],
             'price' => [
                 'required' => 'Fill the Price field please.',
