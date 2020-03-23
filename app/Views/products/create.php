@@ -2,91 +2,101 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="app/Views/script.js"></script>
     <link rel="stylesheet" type="text/css" href="app/Views/app.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
+
     <title>Product List</title>
 
 </head>
 
 <body>
 <div class="border-space">
-    <header>
+
+    <form method="post" action="/new" style="background-color: transparent; border-color: transparent">
+
         <h2 id="page-title">
-            Product Add
+            New Product
         </h2>
         <hr>
-    </header>
 
-    <?php if (isset($errors)) : ?>
-        <ul>
-            <?php foreach ($errors as $error) : ?>
-                <li><?php echo $error; ?></li>
-            <?php endforeach ?>
-        </ul>
-    <?php endif; ?>
+        <?php if (isset($errors)) : ?>
+            <ul>
+                <?php foreach ($errors as $error) : ?>
+                    <li><?php echo $error; ?></li>
+                <?php endforeach ?>
+            </ul>
+        <?php endif; ?>
 
-    <div id="create-form">
-        <form method="post" action="/new">
-            <label>SKU</label>
-            <input name="sku" type="text" required>
+        <label>SKU</label>
+        <span class="tooltip top" aria-label="SKU code for the new product">
+                <input name="sku" type="text" required>
+            </span>
+        <br>
+        <br>
 
+        <label>Name</label>
+
+        <input name="name" type="text" required>
+
+        <br>
+        <br>
+
+        <label>Price</label>
+
+        <input name="price" type="text" required>
+
+        <br>
+        <br>
+
+        <label>Type Switcher</label>
+        <select name="select" onchange="changeOptions(this)" required>
+            <option selected="selected">Please select type</option>
+            <option value="disc">Disc</option>
+            <option value="book">Book</option>
+            <option value="furniture">Furniture</option>
+        </select>
+
+        <div class="type" id="disc" style="display: none">
             <br>
+            <label>Size</label>
+            <input type="number" name="size">
+            <br><br>
+            <p>Please input the capacity of the disk in MB.</p>
+        </div>
+
+        <div class="type" id="book" style="display: none">
             <br>
+            <label>Weight</label>
+            <input type="number" step="0.1" name="weight">
+            <br><br>
+            <p>Please input the weight of the book in Kg.</p>
+        </div>
 
-            <label>Name</label>
-            <input name="name" type="text" required>
-
+        <div class="type" id="furniture" style="display: none">
             <br>
-            <br>
+            <label>Height</label>
+            <input type="number" name="height">
+            <br><br>
+            <label>Width</label>
+            <input type="number" name="width">
+            <br><br>
+            <label>Length</label>
+            <input type="number" name="length">
+            <br><br>
+            <p>Please input dimensions of the furniture.<br>Your input will be saved in HxWxL format.</p>
+        </div>
 
-            <label>Price</label>
-            <input name="price" type="text" required>
+        <br>
+        <input type="submit" value="Save">
+    </form>
 
-            <br>
-            <br>
-
-            <label>Type Switcher</label>
-            <select name="select" onchange="changeOptions(this)" required>
-                <option selected="selected">Please select type</option>
-                <option value="disc">Disc</option>
-                <option value="book">Book</option>
-                <option value="furniture">Furniture</option>
-            </select>
-
-            <div class="type" id="disc" style="display: none">
-                <label>Size</label>
-                <input type="number" name="size">
-                <br><br>
-                <p>Please provide the capacity of the disk in MB.</p>
-            </div>
-
-            <div class="type" id="book" style="display: none">
-                <label>Weight</label>
-                <input type="number" name="weight">
-                <br><br>
-                <p>Please provide the weight of the book in Kg.</p>
-            </div>
-
-            <div class="type" id="furniture" style="display: none">
-                <label>Height</label>
-                <input type="number" name="height">
-                <br><br>
-                <label>Width</label>
-                <input type="number" name="width">
-                <br><br>
-                <label>Length</label>
-                <input type="number" name="length">
-                <br><br>
-                <p>Your input will be saved in HxWxL format.</p>
-            </div>
-
-            <br>
-            <input type="submit" value="Save">
-        </form>
-
-    </div>
+    <footer>
+        <a href="/products">All products</a>
+        <br>
+        <a href="/new">New Product</a>
+    </footer>
 
 </div>
 

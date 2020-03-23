@@ -1,17 +1,12 @@
-#page-title {
-    display: inline-block;
-}
 #delete-select {
-    display: inline-block;
     float: right;
-    margin-top: 0.5em;
-}
-.col-sm-3 {
-    margin-bottom: 25px;
 }
 .border-space {
     margin: 40px;
 }
-.row {
-    margin-top: 20px;
+.doc {
+    text-align: center;
+}
+.option-select {
+    float: right;
 }
